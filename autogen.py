@@ -36,8 +36,7 @@ def create_table(table_name, attribute_name):
     for i in attribute_name:
         script += f"\t{i} {ATTRIBUTE[i]},\n"
 
-    script = script[:-2]
-    script += "\n);"
+    script = script[:-2] + "\n);"
     return script
 
 
@@ -82,8 +81,6 @@ def main():
     sql_text = sql_text[:-2]
     sql_text += ")\nVALUES\n"
     sql_text += script_insert
-
-    print(sql_text)
     try:
         with open('script.sql', 'x') as f:
             f.write(sql_text)
