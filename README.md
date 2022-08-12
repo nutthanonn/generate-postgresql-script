@@ -1,4 +1,4 @@
-# Python Generate sql
+# Python Generate Postgresql
 
 ## Setting
 
