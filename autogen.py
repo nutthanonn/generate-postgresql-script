@@ -1,12 +1,13 @@
 import names
 import inquirer
-from random import randint
+from random import randint, choice
 
 
 ATTRIBUTE = {
     "names": "varchar(255) default NULL",
     "phone": "varchar(100) default NULL",
     "email": "varchar(255) default NULL",
+    "group_names": "char(1) default NULL",
     "salary": "integer NULL"
 }
 
@@ -40,6 +41,11 @@ def create_table(table_name, attribute_name):
     return script
 
 
+def create_group_names():
+    group_list = ['A', 'B', 'C']
+    return choice(group_list)
+
+
 def main():
     sql_text = ""
     script_insert = ""
@@ -68,6 +74,9 @@ def main():
                 temp += f"'{create_email()}', "
             elif i == "salary":
                 temp += f"{create_salary()}, "
+            elif i == "group_names":
+                temp += f"'{create_group_names()}', "
+
         temp = temp[:-2]
         temp += "),\n"
         script_insert += temp
