@@ -8,7 +8,8 @@ ATTRIBUTE = {
     "phone": "varchar(100) default NULL",
     "email": "varchar(255) default NULL",
     "group_names": "char(1) default NULL",
-    "salary": "integer NULL"
+    "salary": "integer NULL",
+    "create_at": "timestamp default now(),"
 }
 
 
