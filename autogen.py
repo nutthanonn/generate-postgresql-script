@@ -9,7 +9,7 @@ ATTRIBUTE = {
     "email": "varchar(255) default NULL",
     "group_names": "char(1) default NULL",
     "salary": "integer NULL",
-    "create_at": "timestamp default now(),"
+    "create_at": "timestamp default now()"
 }
 
 
@@ -86,9 +86,14 @@ def main():
     sql_text += f"DROP TABLE IF EXISTS \"{TABLE_NAME}\";\n\n"
     sql_text += f"{sql_create_table}\n\n"
     sql_text += f"INSERT INTO {TABLE_NAME} ("
+
+    # create table
     for i in attribute:
-        sql_text += f"{i}, "
+        if i != "create_at":
+            sql_text += f"{i}, "
+
     sql_text = sql_text[:-2]
+
     sql_text += ")\nVALUES\n"
     sql_text += script_insert
     try:
